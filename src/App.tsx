@@ -29,7 +29,7 @@ const App = () => {
   return (
     <div className="main">
       <div className="header">
-        <h1>Replace me using the title const</h1>
+        <h1>{title}</h1>
       </div>
       <Task />
       <button
