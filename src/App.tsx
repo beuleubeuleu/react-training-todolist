@@ -1,13 +1,14 @@
 import React from "react";
 import "./App.css";
-import { Task } from "./components/Task";
+import {TasksList} from "./components/TasksList";
 import { TaskFormModal } from "./components/TaskFormModal";
-import { data } from "./data/tasks";
 import {Header} from "./components/Header";
+import {data} from "./data/tasks";
+
+const tasks = data
 
 const App = () => {
   const title = "To do list";
-  const tasks = data;
   const taskToEdit: any = null;
 
   const updateTaskState = (taskId: number) => {
@@ -29,12 +30,9 @@ const App = () => {
 
   return (
     <div className="main">
-      <Header
-          titre={title}
-      />
-        {data.map(i => {
-            return <Task task={i} />
-        })}
+      <Header titre={title}/>
+
+      <TasksList list={data}/>
       <button
         className="add-task-btn"
         onClick={() => console.log("this button should open the modal")}
