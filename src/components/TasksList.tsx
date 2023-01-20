@@ -6,16 +6,15 @@ import {TaskType} from "../models/TaskType";
 
 type TasksListProp = {
     list: TaskType[]
+    deleteTask: (taskId: number) => void
 }
 
-export const TasksList = ({list}: TasksListProp) => {
+export const TasksList = ({list, deleteTask}: TasksListProp) => {
     return (
-        <div className={"tasksList-container"}>
-            {
-                list.map((i: TaskType) => {
-                    return <Task task={i}/>
-                })
-            }
-        </div>
+        <ul className={"tasksList-container"}>
+            {list.map((i: TaskType) => (
+                <Task key={i.id} task={i} deleteTask={deleteTask}/>
+            ))}
+        </ul>
     )
 }

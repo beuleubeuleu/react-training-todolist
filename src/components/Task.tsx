@@ -6,11 +6,12 @@ import {TaskType} from "../models/TaskType";
 
 type TaskProps = {
     task: TaskType
+    deleteTask: (taskId: number) => void
 };
 
-export const Task = ({task}: TaskProps) => {
+export const Task = ({task, deleteTask}: TaskProps) => {
     return (
-        <div className="task-container">
+        <li className="task-container">
             <div className="task-content">
                 <label className="container">
                     <input type="checkbox" checked={task.done}/>
@@ -20,8 +21,8 @@ export const Task = ({task}: TaskProps) => {
             </div>
             <div className="task-actions">
                 <button onClick={() => console.log("edit")}>Edit</button>
-                <button onClick={() => console.log("delete")}>Delete</button>
+                <button onClick={() => deleteTask(task.id)}>Delete</button>
             </div>
-        </div>
+        </li>
     );
 };
